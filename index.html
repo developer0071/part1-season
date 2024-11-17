@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%; height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="page1uzb.jpg" class="icon1">
+    <link rel="stylesheet" href="page1uzb.css">
+    <title>Start</title>
+    <style>
+        body {
+            background: url(mainmenu.jpg) no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            height: 100vh; /* Full height */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the left */
+            position: relative; /* Position for absolute elements */
+        }
+        
+        audio::-webkit-media-controls-panel {
+            background: linear-gradient(rgba(63, 64, 70, 0.993), rgb(151, 151, 151), rgb(52, 52, 58));
+        }
+        audio::-webkit-media-controls-play-button {
+            background-color: rgb(175, 175, 175);
+            border-radius: 50%;
+            animation: music1 4s linear infinite;
+        }
+        audio::-webkit-media-controls-current-time-display {
+            color: white;
+        }
+        audio::-webkit-media-controls-mute-button {
+            background-color: rgb(175, 175, 175);
+            border-radius: 10px;
+        }
+        audio::-webkit-media-controls-time-remaining-display {
+            color: white;
+        }
+        audio::-webkit-media-controls-timeline {
+            background-color: rgb(175, 175, 175);
+            border-radius: 45px;
+        }
+        audio::-webkit-media-controls-volume-slider {
+            background-color: rgb(175, 175, 175);
+            border-radius: 10px;
+        }
+        
+        audio {
+            width: 100%; /* Make audio player full width */
+            margin: 5px 0; /* Add some spacing between audio players */
+            background-color: black; /* Audio player background */
+            color: white; /* Audio player text color */
+            border: none; /* Remove border */
+        }
+
+        .dropdown {
+            position: absolute; /* Positioning for the dropdown */
+            top: 10px; /* Adjust top position */
+            left: 10px; /* Adjust left position */
+        }
+
+        .button {
+            background-color: grey; /* Button color */
+            color: white;
+            padding: 10px 20px; /* More padding for a better shape */
+            font-size: 16px;
+            border: none;
+            border-radius: 25px; /* Rounded edges */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transition for button effects */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+        }
+
+        .button:hover {
+            background-color: darkgrey; /* Button hover color */
+            transform: scale(1.05); /* Slightly enlarge the button */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Increase shadow on hover */
+        }
+
+        .content {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background: linear-gradient(135deg, #333, #444); /* Gradient background */
+            min-width: 220px; /* Slightly wider for better spacing */
+            border-radius: 10px; /* Rounded corners */
+            border: 1px solid #ccc; /* Border color */
+            z-index: 1;
+            opacity: 0; /* Start invisible */
+            transform: translateY(-20px) scale(0.8) rotateX(10deg); /* Initial position for animation */
+            transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+            padding: 10px; /* Padding for the dropdown content */
+        }
+
+        .content.show {
+            display: block; /* Show on toggle */
+            animation: dropIn 0.5s ease forwards; /* Drop-in animation */
+        }
+
+        @keyframes dropIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.8) rotateX(10deg);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translateY(10px) scale(1.05) rotateX(0deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotateX(0deg);
+            }
+        }
+
+        .content.hide {
+            animation: fadeOut 0.3s ease forwards; /* Fade-out animation */
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        .circles-container {
+            display: flex;
+            justify-content: center; /* Center circles horizontally */
+            align-items: center; /* Center circles vertically */
+            height: 100%; /* Full height */
+            position: absolute; /* Positioning for absolute centering */
+            top: 33%; /* Adjusted top position to create more space above <h1> */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Adjust for the size of the container */
+        }
+
+        .circle {
+            position: absolute;
+            box-shadow: 0 0 10px white, inset 0 5px white;
+            height: 200px;
+            width: 80px;
+            border-radius: 50%;
+            background: transparent;
+            border: 3px solid white;
+            animation: animate 8s linear infinite;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: rotate(900deg);
+            }
+            100% {
+                transform: rotate(-900deg);
+            }
+        }
+        .yozuv {
+            text-align: center; /* Center the text */
+            position: absolute; /* Positioning for absolute centering */
+            top: 55%; /* Adjusted top position to create more space above <h1> */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Adjust for the size of the container */
+        }
+
+        h1 {
+            font-size: 2.5vw; /* Smaller responsive font size */
+            color: #ffffff; /* Gold color for a striking appearance */
+            text-shadow: 
+            2px 2px 15px rgba(0, 0, 0, 0.8), /* Strong shadow for depth */
+            2px 2px 25px rgba(0, 0, 0, 0.8), /* Strong shadow for depth */
+            2px 2px 5px rgba(0, 0, 0, 0.8); /* Strong shadow for depth */
+            animation: bounceIn 1.5s ease forwards; /* Bounce animation */
+            opacity: 0; /* Start invisible */
+            transform: translateY(-30px); /* Start slightly above */
+        }
+        .circle:nth-child(1) { animation-duration: 8.2s; }
+        .circle:nth-child(2) { animation-duration: 9.2s; }
+        .circle:nth-child(3) { animation-duration: 8.4s; }
+        .circle:nth-child(4) { animation-duration: 9.4s; }
+        .circle:nth-child(5) { animation-duration: 8.6s; }
+        .circle:nth-child(6) { animation-duration: 9.6s; }
+        .circle:nth-child(7) { animation-duration: 9.8s; }
+        @keyframes bounceIn {
+            0% {
+                opacity: 0; /* Start invisible */
+                transform: translateY(-30px); /* Start slightly above */
+            }
+            60% {
+                opacity: 1; /* Fade in to visible */
+                transform: translateY(10px); /* Move slightly down */
+            }
+            100% {
+                transform: translateY(0); /* Move to original position */
+            }
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 5vw; /* Adjust font size for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <button class="button" onclick="toggleDropdown()">Music</button>
+        <div class="content" id="musicDropdown">
+            <audio controls src="/audios/Interstellar Main Theme - Hans Zimmer.mp3"></audio>
+            <audio controls src="/audios/Eminem - Stan (Lyrics) ft. Dido.mp3"></audio>
+            <audio controls src="/audios/New Day - Tokyo Music Walker [Vlog No Copyright Music].mp3"></audio>
+            <audio controls src="/audios/Mr.Kitty - After Dark (Lyrics).mp3"></audio>
+            <audio controls src="/audios/BoyWithUke - Toxic (Official Lyric Video).mp3"></audio>
+        </div>
+    </div>
+
+    <div class="circles-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    <div class="yozuv">
+        <h1>Hello and welcome.In this site you must find the answers and solve quests and others!<br>But dont worry.<br>There will be tips for you</h1>
+    </div>
+    <script>
+        function toggleDropdown() {
+            const dropdownContent = document.getElementById("musicDropdown");
+            if (dropdownContent.classList.contains("show")) {
+                dropdownContent.classList.remove("show");
+                dropdownContent.classList.add("hide");
+                setTimeout(() => {
+                    dropdownContent.classList.remove("hide");
+                    dropdownContent.style.display = "none"; // Hide after animation
+                }, 300); // Match the duration of the fade-out animation
+            } else {
+                dropdownContent.style.display = "block"; // Show before animation
+                dropdownContent.classList.remove("hide");
+                dropdownContent.classList.add("show");
+            }
+        }
+
+        // Optional: Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.button')) {
+                const dropdowns = document.getElementsByClassName("content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                        openDropdown.classList.add('hide');
+                        setTimeout(() => {
+                            openDropdown.classList.remove('hide');
+                            openDropdown.style.display = "none"; // Hide after animation
+                        }, 300); // Match the duration of the fade-out animation
+                    }
+                }
+            }
+        }
+        // Trigger the animation on load
+        window.onload = function() {
+            document.querySelector('h1').style.opacity = 1; // Make it visible
+        };
+    </script>
+</body>
+</html>
